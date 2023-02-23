@@ -12,7 +12,9 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/documents.readonly']
 
 # The ID of a sample document.
-DOCUMENT_ID = '1fJfR22GDlk3C636qYsCiV42lajjZcAKEUUsB2uU3rEA'
+DOCUMENT_ID = '1fJfR22GDlk3C636qYsCiV42lajjZcAKEUUsB2uU3rEA' #get this from the url of your document,
+#e.g: https://docs.google.com/document/d/1fJfR22GDlk3C636qYsCiV42lajjZcAKEUUsB2uU3rEA/edit, get the string between "/d/" and "/edit"
+
 
 global document
 
@@ -62,11 +64,9 @@ def get_word_count():
         if paragraph == None:
             continue
         paragraph_element = paragraph.get("elements")
-        
+
         pg_content = paragraph_element[0]["textRun"]["content"] #raw text from the paragraph element
         pg_content = pg_content.replace("\n", "") #removing all the new line strings 
 
         wc += len(pg_content)
     return wc
-
-print("word count: " , get_word_count())
