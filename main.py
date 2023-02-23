@@ -53,5 +53,20 @@ def main():
 if __name__ == '__main__':
     main()
 
-print(document.get('title'))
 
+def get_word_count():
+    wc = 0
+    structural_objects = document.get('body').get('content')
+    for so in structural_objects:
+        paragraph = so.get("paragraph")
+        if paragraph == None:
+            continue
+        paragraph_element = paragraph.get("elements")
+        
+        pg_content = paragraph_element[0]["textRun"]["content"] #raw text from the paragraph element
+        pg_content = pg_content.replace("\n", "") #removing all the new line strings 
+
+        wc += len(pg_content)
+    return wc
+
+print("word count: " , get_word_count())
