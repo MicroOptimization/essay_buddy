@@ -22,3 +22,4 @@ var/
 
 env3
 credentials.json
+token.json
